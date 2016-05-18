@@ -1,0 +1,3 @@
+	mergeID	perc_sample1.bam	perc_sample2.bam
+1	chr5_14043828_14044878	0	17
+2	chr7_112157312_112157862	0	9

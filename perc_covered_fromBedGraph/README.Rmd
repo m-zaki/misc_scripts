@@ -1,0 +1,26 @@
+---
+title: "README"
+author: "Zaki Fadlullah"
+date: "29 April 2016"
+output: html_document
+---
+
+## Calcluate percentage covered from bed graph
+
+Given a BAM file is unavailable, we would like to determine from a bedGraph file - the percentage of a particular peak is covered by sequencing reads
+
+The workflow consits of these main steps  
+* Step 1 - Edit the bedGraph file  
+* Step 2 - Bin the edited bedGraph file
+* Step 3 - Perform read counting
+* Step 4 - Getting summary of percentage covered 
+
+
+### README incomlete - need to edit
+
+### Step 1 - Edit the bedGraph file
+
+
+### Step 2 - 
+
+### Step 3 - 
