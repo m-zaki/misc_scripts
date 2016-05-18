@@ -18,29 +18,25 @@ load(file.path(outputRegionDir, "Rsubread_raw_output.Rdata"))
 # Number of reads assigned are stored in the "res" object
 df <- res$counts
 colnames(df) <- gsub("X.scratch.zaki.project.lowInput.20160510_comparison.bam.sub1.", "", colnames(df))
-colnames(df) <- gsub(".bam", "", colnames(df))                  
-head(df)
+colnames(df) <- gsub(".bam", "", colnames(df))     
 
 # Melt data
 m <- melt(df)
 colnames(m) <- c("region", "sample", "value")
-# Add column for colouring graph later
-m$simple <- gsub("_r.*", "", m$sample)
 
-cols <- c("#b30000", 
-          "#d7301f", 
-          "#084081", "#0868ac", "#2b8cbe",
-          "#004529", "#006837", "#78c679",
-          "#084081", "#0868ac", "#2b8cbe",
-          "#004529", "#006837", "#78c679")
 
-# Draw boxplot
+# Draw bar plot
 pdf(file.path(outputRegionDir, "Region_distibution.pdf"), height=7, width=11)
-ggplot(m, aes(x=region, y=value, fill=sample)) +
-  geom_bar(stat="identity", position="dodge") +
-  scale_y_continuous(labels = comma, name = "Number of reads") +
-  scale_fill_manual(values=cols) +
-  ggtitle("Number of reads assigned to each genomic region")
-dev.
-  
+ggplot(m, aes(x=sample, y=value, fill=region)) +
+  geom_bar(stat="identity", position="fill")  +
+  scale_y_continuous(labels = percent_format(), name = "Percentage of reads") +
+  ggtitle("Number of reads assigned to each genomic region") +
+  theme(axis.text.x = element_text(angle = 45, hjust= 1))
+dev.off()
+
+
+
+
+
+
   
